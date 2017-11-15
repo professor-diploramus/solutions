@@ -1,0 +1,61 @@
+# OS generated files
+.DS_Store
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Maven
+target/
+build/
+
+# Java
+*.class
+
+# Package
+*.jar
+*.war
+*.ear
+*.7z
+*.dmg
+*.gz
+*.iso
+*.rar
+*.tar
+*.zip
+
+# IDE
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.externalToolBuilders
+
+# Spring
+.springBeans
+
+# Testing
+test-output
+
+# logging
+logs/
+log/
+*.log
+
+# Binary folder
+bin/
+
+# jrebel files
+rebel.xml
+
+# sonar
+.sonar/
+
+# pmd
+.eclipse-pmd
+
+
