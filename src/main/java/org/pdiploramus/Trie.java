@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by abedajn on 10/22/17.
  */
 public class Trie {
 
