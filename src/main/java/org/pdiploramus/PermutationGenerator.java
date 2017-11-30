@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class PermutationGenerator {
 
-    static class State {
+    private static class State {
         String perm;
         String canonical;
         int[] remaining;
@@ -21,7 +21,7 @@ public class PermutationGenerator {
         }
     }
 
-    List<String> generate(String s) {
+    public List<String> generate(String s) {
         List<String> ret = new ArrayList<>();
         Stack<State> stk = new Stack<>();
         stk.push(getInitialState(s));
@@ -38,7 +38,7 @@ public class PermutationGenerator {
         return ret;
     }
 
-    State getInitialState(String s) {
+    private State getInitialState(String s) {
         Map<Character, Integer> mp = new TreeMap<>();
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
@@ -59,7 +59,7 @@ public class PermutationGenerator {
         return ret;
     }
 
-    List<State> getChildrenStates(State parent) {
+    private List<State> getChildrenStates(State parent) {
         List<State> ret = new ArrayList<>();
         String perm = parent.perm;
         String canonical = parent.canonical;

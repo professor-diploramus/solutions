@@ -1,24 +1,38 @@
 package org.pdiploramus;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  *
  */
 public class General {
+
+    static class Node {
+        int s;
+        Node left, right;
+
+        Node(int s) {
+            this.s = s;
+        }
+
+        @Override
+        public String toString() {
+            return s + "";
+        }
+    }
+
+
     public static void main(String[] args) {
-        Set<Integer> st1 = new HashSet<>();
-        st1.add(1);
+//        Node one = new Node(1);
+//        Node two = new Node(2);
+//        Node three = new Node(3);
+//        Node four = new Node(4);
+//        Node five = new Node(5);
+//        Node six = new Node(6);
+//
+//        four.left = three;
+//        three.left = five;
 
-        Set<Integer> st2 = new HashSet<>();
-        st2.add(2);
-        st2.add(1);
-
-        st1.retainAll(st2);
-
-        System.out.println(st1);
 
     }
 }
