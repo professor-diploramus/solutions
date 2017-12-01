@@ -1,38 +1,38 @@
 package org.pdiploramus;
 
-import java.util.*;
-
 /**
  *
  */
 public class General {
 
-    static class Node {
-        int s;
-        Node left, right;
+    int sum;
 
-        Node(int s) {
-            this.s = s;
+    void dfs(Utils.TreeNode n, boolean add) {
+        if (n == null) return;
+        if (add) {
+            sum += n.s;
         }
-
-        @Override
-        public String toString() {
-            return s + "";
-        }
+        dfs(n.left, !add);
+        dfs(n.right, !add);
     }
 
 
     public static void main(String[] args) {
-//        Node one = new Node(1);
-//        Node two = new Node(2);
-//        Node three = new Node(3);
-//        Node four = new Node(4);
-//        Node five = new Node(5);
-//        Node six = new Node(6);
-//
-//        four.left = three;
-//        three.left = five;
+        Utils.TreeNode a = new Utils.TreeNode(3);
+        Utils.TreeNode b = new Utils.TreeNode(4);
+        Utils.TreeNode c = new Utils.TreeNode(5);
+        Utils.TreeNode d = new Utils.TreeNode(1);
+        Utils.TreeNode e = new Utils.TreeNode(3);
+        Utils.TreeNode f = new Utils.TreeNode(1);
 
+        a.left = b;
+        a.right = c;
+        b.left = d;
+        b.right = e;
+        c.right = f;
 
+        General g = new General();
+        g.dfs(a, true);
+        System.out.println(g.sum);
     }
 }

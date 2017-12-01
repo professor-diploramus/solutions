@@ -36,13 +36,13 @@ public class VerticalPrintBinaryTree {
     }
 
     public static void main(String[] args) {
-//        Node three = new Node(3);
-//        Node nine = new Node(9);
-//        Node twenty = new Node(20);
-//        Node four = new Node(4);
-//        Node five = new Node(5);
-//        Node two = new Node(2);
-//        Node seven = new Node(7);
+//        TreeNode three = new TreeNode(3);
+//        TreeNode nine = new TreeNode(9);
+//        TreeNode twenty = new TreeNode(20);
+//        TreeNode four = new TreeNode(4);
+//        TreeNode five = new TreeNode(5);
+//        TreeNode two = new TreeNode(2);
+//        TreeNode seven = new TreeNode(7);
 //        three.left = nine;
 //        three.right = twenty;
 //        nine.left = four;
