@@ -1,38 +1,61 @@
 package org.pdiploramus;
 
+import java.util.*;
+
 /**
  *
  */
 public class General {
 
-    int sum;
-
-    void dfs(Utils.TreeNode n, boolean add) {
-        if (n == null) return;
-        if (add) {
-            sum += n.s;
+    int DFS(boolean vis[], int[][] skip, int cur, int remain) {
+        if (remain < 0) return 0;
+        if (remain == 0) return 1;
+        vis[cur] = true;
+        int rst = 0;
+        for (int i = 1; i <= 9; ++i) {
+            // If vis[i] is not visited and (two numbers are adjacent or skip number is already visited)
+            if (!vis[i] && (skip[cur][i] == 0 || (vis[skip[cur][i]]))) {
+                rst += DFS(vis, skip, i, remain - 1);
+            }
         }
-        dfs(n.left, !add);
-        dfs(n.right, !add);
+        vis[cur] = false;
+        return rst;
     }
 
+    public int numberOfPatterns(int m, int n) {
+        // Skip array represents number to skip between two pairs
+        int skip[][] = new int[10][10];
+        skip[1][3] = skip[3][1] = 2;
+        skip[1][7] = skip[7][1] = 4;
+        skip[3][9] = skip[9][3] = 6;
+        skip[7][9] = skip[9][7] = 8;
+        skip[1][9] = skip[9][1] = skip[2][8] = skip[8][2] = skip[3][7] = skip[7][3] = skip[4][6] = skip[6][4] = 5;
+        boolean vis[] = new boolean[10];
+        int rst = 0;
+        // DFS search each length from m to n
+        for (int i = m; i <= n; ++i) {
+            rst += DFS(vis, skip, 1, i - 1) * 4;    // 1, 3, 7, 9 are symmetric
+            rst += DFS(vis, skip, 2, i - 1) * 4;    // 2, 4, 6, 8 are symmetric
+            rst += DFS(vis, skip, 5, i - 1);        // 5
+        }
+        return rst;
+    }
 
     public static void main(String[] args) {
-        Utils.TreeNode a = new Utils.TreeNode(3);
-        Utils.TreeNode b = new Utils.TreeNode(4);
-        Utils.TreeNode c = new Utils.TreeNode(5);
-        Utils.TreeNode d = new Utils.TreeNode(1);
-        Utils.TreeNode e = new Utils.TreeNode(3);
-        Utils.TreeNode f = new Utils.TreeNode(1);
-
-        a.left = b;
-        a.right = c;
-        b.left = d;
-        b.right = e;
-        c.right = f;
-
-        General g = new General();
-        g.dfs(a, true);
-        System.out.println(g.sum);
+        System.out.println(new General().numberOfPatterns(1, 1));
+        System.out.println(new General().numberOfPatterns(2, 2));
+        System.out.println(new General().numberOfPatterns(3, 3));
+        System.out.println(new General().numberOfPatterns(4, 4));
+        System.out.println(new General().numberOfPatterns(5, 5));
+        System.out.println(new General().numberOfPatterns(6, 6));
+        System.out.println(new General().numberOfPatterns(7, 7));
+        System.out.println(new General().numberOfPatterns(8, 8));
+        System.out.println(new General().numberOfPatterns(9, 9));
+//        for (int r = 1; r <= 9; r++) {
+//            for (int c = 1; c <= 9; c++) {
+//                System.out.println(r +","+c + "  " + new General().numberOfPatterns(r, c));
+//            }
+//        }
     }
+
 }
