@@ -1,5 +1,6 @@
-package org.pdiploramus;
+package org.pdiploramus.nestedInteger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NestedIntegerImpl implements NestedInteger {
@@ -13,9 +14,7 @@ public class NestedIntegerImpl implements NestedInteger {
         this.isInteger = true;
     }
 
-    NestedIntegerImpl(List<NestedInteger> l) {
-        this.l = l;
-        this.isInteger = false;
+    NestedIntegerImpl() {
     }
 
     @Override
@@ -26,6 +25,20 @@ public class NestedIntegerImpl implements NestedInteger {
     @Override
     public Integer getInteger() {
         return i;
+    }
+
+    @Override
+    public void setInteger(int value) {
+        i = value;
+    }
+
+    @Override
+    public void add(NestedInteger ni) {
+        isInteger = false;
+        if (l == null) {
+            l = new ArrayList<>();
+        }
+        l.add(ni);
     }
 
     @Override
